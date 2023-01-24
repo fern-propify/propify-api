@@ -9,13 +9,13 @@ services:
       auth: true
       base-path: /v1/rent-payment-history
       endpoints:
-        getAllRentPaymentHistory:
-          path: /
+        getAllRecords:
+          path: ""
           method: GET
           docs: Get all rent payment history records
           display-name: Retrieves all rent payment history records
           request:
-            name: GetAllRentPaymentHistoryRequest
+            name: GetAllRentPaymentRecordsRequest
             query-parameters:
               order-by: 
                 type: optional<string>
@@ -29,11 +29,11 @@ services:
               limit: 
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: AllRentPaymentHistory
+          response: GetAllRentPaymentRecordsResponse
           errors:
             - commons.DefaultError
 types:
-  RentPaymentHistory:
+  RentPaymentRecord:
     properties:
       id:
         docs: The unique identifier for the applicant
@@ -70,9 +70,9 @@ types:
         type: optional<string>
       integration_vendor:
         docs: The property management system of record
-        type: commons.IntegrationVendor
+        type: string
 
-  AllRentPaymentHistory:
+  GetAllRentPaymentRecordsResponse:
     properties:
-      meta: commons.Meta
-      results: list<RentPaymentHistory>
+      meta: commons.Metadata
+      results: list<RentPaymentRecord>

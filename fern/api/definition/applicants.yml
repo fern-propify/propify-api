@@ -9,8 +9,8 @@ services:
       auth: true
       base-path: /v1/applicants
       endpoints:
-        getAllApplicants:
-          path: /
+        getAll:
+          path: ""
           method: GET
           docs: Get all applicants
           display-name: Retrieve all applicants
@@ -29,11 +29,11 @@ services:
               limit:
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: AllApplicants
+          response: GetAllApplicantsResponse
           errors: 
             - commons.DefaultError
 
-        getApplicant:
+        get:
           path: /{id}
           method: GET
           docs: Get a single applicant
@@ -60,9 +60,9 @@ services:
             - commons.DefaultError
             
 types:
-  AllApplicants: 
+  GetAllApplicantsResponse: 
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<Applicant>
 
   Applicant:
@@ -131,5 +131,5 @@ types:
         type: optional<string>
         docs: Notes about the applicant 
       integration_vendor: 
-        type: commons.IntegrationVendor
+        type: string
         docs: The property management system of record

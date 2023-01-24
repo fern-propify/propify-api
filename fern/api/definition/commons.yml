@@ -4,18 +4,11 @@ types:
   ResidentId: string 
   ApplicantId: string 
 
-  Meta:
+  Metadata:
     properties:
       offset: optional<integer>
       limit: optional<integer>
       orderBy: list<unknown>
-
-  IntegrationVendor: 
-    enum: 
-      - DoorLoop
-      - Buildium
-      - Yardi
-      # etc.
 
   DefaultErrorType: 
     properties:

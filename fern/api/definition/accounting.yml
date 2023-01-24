@@ -10,17 +10,17 @@ services:
       base-path: /v1/accounting
       endpoints:
         getAllRecords:
-          path: /
+          path: ""
           method: GET
           display-name: Retrieves all accounting records
-          response: AllAccountingRecords
+          response: GetAllAccountingRecordsResponse
           errors: 
             - commons.DefaultError
 
 types:
-  AllAccountingRecords: 
+  GetAllAccountingRecordsResponse: 
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<AccountingRecord>
 
   AccountingRecord: unknown

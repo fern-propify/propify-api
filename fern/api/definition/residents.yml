@@ -9,8 +9,8 @@ services:
       auth: true
       base-path: /v1/residents
       endpoints:
-        getAllResidents:
-          path: /
+        getAll:
+          path: ""
           method: GET
           docs: Get all residents
           display-name: Retrieves all residents
@@ -29,7 +29,7 @@ services:
               limit: 
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: AllResidents
+          response: GetAllResidentsResponse
 
         get:
           path: /{id}
@@ -53,7 +53,7 @@ services:
               limit: 
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: SingleResident
+          response: GetResidentResponse
 
 types:
   Resident:
@@ -149,12 +149,12 @@ types:
         docs: The property management system of record
         type: string
 
-  AllResidents:
+  GetAllResidentsResponse:
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<Resident>
 
-  SingleResident:
+  GetResidentResponse:
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: optional<Resident>
