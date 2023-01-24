@@ -1,0 +1,160 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    ResidentsService:
+      auth: true
+      base-path: /v1/residents
+      endpoints:
+        getAllResidents:
+          path: /
+          method: GET
+          docs: Get all residents
+          display-name: Retrieves all residents
+          request:
+            name: GetAllResidents
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllResidents
+
+        get:
+          path: /{id}
+          method: GET
+          docs: Get a single resident
+          display-name: Retrieves a single resident by resident ID
+          path-parameters:
+            id: commons.ResidentId
+          request:
+            name: GetResidentRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: SingleResident
+
+types:
+  Resident:
+    properties:
+      id:
+        docs: The unique identifier for the resident
+        type: string
+      created_at:
+        docs: The date record first entered propify
+        type: string
+      updated_at:
+        docs: The date record was last updated in propify
+        type: string
+      x_id:
+        docs: The external ID from the source vendor
+        type: string
+      x_lease_id:
+        docs: The external lease ID from the source vendor
+        type: optional<string>
+      first_name:
+        docs: First name of the resident
+        type: optional<string>
+      middle_name:
+        docs: Middle name of the resident
+        type: optional<string>
+      last_name:
+        docs: Last name of the resident
+        type: optional<string>
+      date_of_birth:
+        docs: Resident date of birth
+        type: optional<string>
+      address_1:
+        docs: Resident street address line 1
+        type: optional<string>
+      address_2:
+        docs: Resident street address line 2
+        type: optional<string>
+      city:
+        docs: Resident city
+        type: optional<string>
+      state:
+        docs: Resident state
+        type: optional<string>
+      zip:
+        docs: Resident zip code
+        type: optional<string>
+      phone_1:
+        docs: Resident phone number
+        type: optional<string>
+      phone_1_type:
+        docs: The type of phone number 1
+        type: optional<string>
+      phone_2:
+        docs: Resident phone number 2
+        type: optional<string>
+      phone_2_type:
+        docs: The type of phone number 2
+        type: optional<string>
+      email_1:
+        docs: Resident email address
+        type: optional<string>
+      email_2:
+        docs: Resident email address alternate
+        type: optional<string>
+      address_1_alternate:
+        docs: Resident street address line 1 alternate
+        type: optional<string>
+      address_2_alternate:
+        docs: Resident street address line 2 alternate
+        type: optional<string>
+      city_alternate:
+        docs: Resident city alternate
+        type: optional<string>
+      state_alternate:
+        docs: Resident state alternate
+        type: optional<string>
+      zip_alternate:
+        docs: Resident zip code alternate
+        type: optional<string>
+      is_employee:
+        docs: Is the resident an employee
+        type: optional<boolean>
+      notes:
+        docs: Notes
+        type: optional<string>
+      balance_in_cents:
+        docs: The rent balance owed
+        type: optional<double>
+      late_balance_in_cents:
+        docs: The past due rent balance owed
+        type: optional<double>
+      integration_vendor:
+        docs: The property management system of record
+        type: string
+
+  AllResidents:
+    properties:
+      meta: commons.Meta
+      results: list<Resident>
+
+  SingleResident:
+    properties:
+      meta: commons.Meta
+      results: optional<Resident>

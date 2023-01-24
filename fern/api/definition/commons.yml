@@ -1,4 +1,31 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
 
 types:
-  id: string
+  ResidentId: string 
+  ApplicantId: string 
+
+  Meta:
+    properties:
+      offset: optional<integer>
+      limit: optional<integer>
+      orderBy: list<unknown>
+
+  IntegrationVendor: 
+    enum: 
+      - DoorLoop
+      - Buildium
+      - Yardi
+      # etc.
+
+  DefaultErrorType: 
+    properties:
+      error: ErrorMessage
+
+  ErrorMessage: 
+    properties:
+      message: string 
+
+errors: 
+  DefaultError: 
+    status-code: 400
+    type: DefaultErrorType

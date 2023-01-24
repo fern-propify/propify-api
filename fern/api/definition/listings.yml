@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+  
+services:
+  http:
+    ListingsService:
+      auth: true
+      base-path: /v1/listings
+      endpoints:
+        getAllListings:
+          path: /
+          method: GET
+          display-name: Retrieves all listings
+          response: AllListings
+          errors: 
+            - commons.DefaultError
+
+types:
+  AllListings:
+    properties:
+      meta: commons.Meta
+      results: list<Listing>
+
+  Listing: unknown
+      

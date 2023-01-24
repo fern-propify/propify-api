@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+  
+services:
+  http:
+    UnitPricingService:
+      auth: true
+      base-path: /v1/unit-pricing
+      endpoints:
+        getAllUnitPricing:
+          path: /
+          method: GET
+          display-name: Retrieves all unit pricing
+          response: AllUnitPricing
+          errors:
+            - commons.DefaultError
+
+types:
+  AllUnitPricing:
+    properties:
+      meta: commons.Meta
+      results: list<UnitPricing>
+
+  UnitPricing: unknown

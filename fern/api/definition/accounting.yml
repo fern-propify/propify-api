@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    AccountingService:
+      auth: true
+      base-path: /v1/accounting
+      endpoints:
+        getAllRecords:
+          path: /
+          method: GET
+          display-name: Retrieves all accounting records
+          response: AllAccountingRecords
+          errors: 
+            - commons.DefaultError
+
+types:
+  AllAccountingRecords: 
+    properties:
+      meta: commons.Meta
+      results: list<AccountingRecord>
+
+  AccountingRecord: unknown

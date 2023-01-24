@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    ApplicantsService:
+      auth: true
+      base-path: /v1/applicants
+      endpoints:
+        getAllApplicants:
+          path: /
+          method: GET
+          docs: Get all applicants
+          display-name: Retrieve all applicants
+          request:
+            name: GetAllApplicationsRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: |
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset:
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit:
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllApplicants
+          errors: 
+            - commons.DefaultError
+
+        getApplicant:
+          path: /{id}
+          method: GET
+          docs: Get a single applicant
+          display-name: Retrieves a single applicants by applicants ID
+          path-parameters:
+            id: commons.ApplicantId
+          request:
+            name: GetApplicationRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: Applicant
+          errors: 
+            - commons.DefaultError
+            
+types:
+  AllApplicants: 
+    properties:
+      meta: commons.Meta
+      results: list<Applicant>
+
+  Applicant:
+    properties:
+      id: 
+        type: string
+        docs: The unique identifier for the applicant
+      created_at: 
+        type: string
+        docs: The [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) record first entered propify
+      updated_at: 
+        type: string
+        docs: The [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) record was last updated in propify
+      x_id: 
+        type: string
+        docs: The external ID from the source vendor
+      x_property_id: 
+        type: optional<string>
+        docs: The external lease ID from the source vendor
+      first_name: 
+        type: optional<string>
+        docs: First name of the applicant
+      middle_name: 
+        type: optional<string>
+        docs: Middle name of the applicant
+      last_name: 
+        type: optional<string>
+        docs: Last name of the applicant
+      date_of_birth: 
+        type: optional<datetime>
+        docs: Applicant date of birth
+      address_1: 
+        type: optional<string>
+        docs: Applicant street address line 1
+      address_2: 
+        type: optional<string>
+        docs: Applicant street address line 2
+      city: 
+        type: optional<string>
+        docs: Applicant city
+      state: 
+        type: optional<string>
+        docs: Applicant state 
+      zip: 
+        type: optional<string>
+        docs: Applicant zip code 
+      phone_1: 
+        type: optional<string>
+        docs: Applicant phone number
+      phone_1_type: 
+        type: optional<string>
+        docs: The type of phone number
+      phone_2: 
+        type: optional<string>
+        docs: Applicant alternative phone number
+      phone_2_type: 
+        type: optional<string>
+        docs: The type of the alternative phone number
+      email_1: 
+        type: optional<string>
+        docs: Applicant email address
+      email_2: 
+        type: optional<string>
+        docs: Applicant email address alternative
+      notes: 
+        type: optional<string>
+        docs: Notes about the applicant 
+      integration_vendor: 
+        type: commons.IntegrationVendor
+        docs: The property management system of record

@@ -1,0 +1,112 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+  
+services:
+  http:
+    LeasesService:
+      auth: true
+      base-path: /v1/leases
+      endpoints:
+        getAllLeases:
+          path: /
+          method: GET
+          docs: Get all leases
+          display-name: Retrieves all leases
+          request:
+            name: GetAllLeasesRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllLeases
+          errors: 
+            - commons.DefaultError
+
+types:
+  Lease:
+    properties:
+      id: 
+        type: commons.ResidentId
+        docs: The unique identifier for the resident
+      created_at: 
+        type: datetime
+        docs: The date record first entered propify
+      updated_at: 
+        type: datetime
+        docs: The date record was last updated in propify
+      x_id: 
+        type: string
+        docs: The external ID from the source vendor
+      x_property_id: 
+        type: optional<string>
+        docs: The external property ID from the source vendor
+      x_resident_id: 
+        type: optional<string>
+        docs: The external resident ID from the source vendor
+      x_unit_id: 
+        type: optional<string>
+        docs: The external unit ID from the source vendor
+      rent_amount_in_cents: 
+        type: optional<double>
+        docs: The rent amount in cents
+      rent_due_day: 
+        type: optional<integer>
+        docs: The day of the month the rent is due 
+      deposit_amount: 
+        type: optional<string>
+        docs: The deposit amount in cents
+      deposit_amount_amount_in_cents: 
+        type: optional<double>
+        docs: The deposit amount in cents
+      deposit_date: 
+        type: optional<datetime>
+        docs: The date the deposit was received
+      signature_date: 
+        type: optional<datetime>
+        docs: The date the lease was signed
+      start_date: 
+        type: optional<datetime>
+        docs: The date the lease starts
+      end_date: 
+        type: optional<datetime>
+        docs: The date the lease ends
+      application_date: 
+        type: optional<datetime> 
+        docs: The date the application was submitted
+      scheduled_move_in_date: 
+        type: optional<datetime>
+        docs: The date the resident is scheduled to move in
+      scheduled_move_out_date: 
+        type: optional<datetime>
+        docs: The date the resident is scheduled to move out
+      realized_move_in_date: 
+        type: optional<datetime>
+        docs: The date the resident actually moved in
+      realized_move_out_date: 
+        type: optional<datetime>
+        docs: The date the resident actually moved out
+      status: 
+        type: optional<string>
+        docs: The status of the lease
+      type: 
+        type: optional<string>
+        docs: The type of lease
+      integration_vendor: 
+        type: commons.IntegrationVendor
+        docs: The property management system of record
+
+  AllLeases:
+    properties:
+      meta: commons.Meta
+      results: list<Lease>

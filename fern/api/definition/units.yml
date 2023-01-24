@@ -1,0 +1,121 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    UnitsService:
+      auth: true
+      base-path: /v1/units
+      endpoints:
+        getAllUnits:
+          path: /
+          method: GET
+          docs: Get all units
+          display-name: Retrieves all units
+          request:
+            name: GetAllUnitsRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllUnits
+          errors:
+            - commons.DefaultError
+
+types:
+  Unit:
+    properties:
+      id:
+        docs: The unique identifier for the property
+        type: string
+      created_at:
+        docs: The date record first entered propify
+        type: string
+      updated_at:
+        docs: The date record was last updated in propify
+        type: string
+      x_id:
+        docs: The external ID from the source vendor
+        type: string
+      x_property_id:
+        docs: The external ID of the property from the source vendor
+        type: string
+      number:
+        docs: The unit number
+        type: optional<string>
+      bedrooms:
+        docs: The number of bedrooms
+        type: optional<string>
+      bathrooms:
+        docs: The number of bathrooms
+        type: optional<string>
+      square_feet:
+        docs: The square footage of the unit
+        type: optional<integer>
+      building_number:
+        docs: The building number
+        type: optional<string>
+      building_name:
+        docs: The building name
+        type: optional<string>
+      floor_plan_code:
+        docs: The floor plan code
+        type: optional<string>
+      floor_plan_name:
+        docs: The floor plan name
+        type: optional<string>
+      street_address_1:
+        docs: The street address line 1
+        type: optional<string>
+      street_address_2:
+        docs: The street address line 2
+        type: optional<string>
+      city:
+        docs: The city
+        type: optional<string>
+      state:
+        docs: The state
+        type: optional<string>
+      zip:
+        docs: The zip code
+        type: optional<string>
+      rent_amount_market_in_cents:
+        docs: The market rent amount in cents
+        type: optional<double>
+      rent_amount_min_in_cents:
+        docs: The minimum rent amount in cents
+        type: optional<double>
+      rent_amount_max_in_cents:
+        docs: The maximum rent amount in cents
+        type: optional<double>
+      is_available:
+        docs: Whether the unit is available
+        type: optional<boolean>
+      is_furnished:
+        docs: Whether the unit is furnished
+        type: optional<boolean>
+      is_listed:
+        docs: Whether the unit is listed
+        type: optional<boolean>
+      is_vacant:
+        docs: Whether the unit is vacant
+        type: optional<boolean>
+      integration_vendor:
+        docs: The property management system of record
+        type: commons.IntegrationVendor
+
+  AllUnits:
+    properties:
+      meta: commons.Meta
+      results: list<Unit>

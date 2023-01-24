@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    PropertiesService:
+      auth: true
+      base-path: /v1/properties
+      endpoints:
+        getAllProperties:
+          path: /
+          method: GET
+          docs: Get all properties
+          display-name: Retrieves all properties
+          request:
+            name: GetAllPropertiesRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllProperties
+
+types:
+  Property:
+    properties:
+      id: 
+        type: string
+        docs: The unique identifier for the property
+      created_at: 
+        type: datetime
+        docs: The date record first entered propify
+      updated_at: 
+        type: datetime
+        docs: The date record was last updated in propify
+      x_id: 
+        type: string
+        docs: The external ID from the source vendor
+      name: 
+        type: optional<string>
+        docs: The name of the property
+      number_of_units: 
+        type: optional<integer>
+        docs: The number of units in the property
+      street_address_1: 
+        type: optional<string>
+        docs: The first line of the street address
+      street_address_2: 
+        type: optional<string>
+        docs: The second line of the street address
+      city: 
+        type: optional<string>
+        docs: The city
+      state: 
+        type: optional<string>
+        docs: The state
+      zip: 
+        type: optional<string>
+        docs: The zip code
+      year_built: 
+        type: optional<integer>
+        docs: The year the property was built
+      manager_name: 
+        type: optional<string>
+        docs: The name of the property manager
+      manager_phone_1: 
+        type: optional<string>
+        docs: The first phone number of the property manager
+      manager_phone_1_type: 
+        type: optional<string>
+        docs: The type of the first phone number of the property manager
+      manager_phone_2: 
+        type: optional<string>
+        docs: The second phone number of the property manager
+      manager_phone_2_type: 
+        type: optional<string>
+        docs: The type of the second phone number of the property manager
+      manager_email: 
+        type: optional<string>
+        docs: The email address of the property manager
+      integration_vendor: 
+        type: commons.IntegrationVendor
+        docs: The property management system of record
+
+  AllProperties:
+    properties:
+      meta: commons.Meta
+      results: list<Property>

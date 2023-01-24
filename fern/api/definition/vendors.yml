@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    VendorsService:
+      auth: true
+      base-path: /v1/vendors
+      endpoints:
+        getAllVendors:
+          path: /
+          method: GET
+          display-name: Retrieves all vendors
+          response: AllVendors
+          errors:
+            - commons.DefaultError
+
+types:
+  AllVendors:
+    properties:
+      meta: commons.Meta
+      results: list<Vendor>
+
+  Vendor: unknown 

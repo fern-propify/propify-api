@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    RentPaymentHistoryService:
+      auth: true
+      base-path: /v1/rent-payment-history
+      endpoints:
+        getAllRentPaymentHistory:
+          path: /
+          method: GET
+          docs: Get all rent payment history records
+          display-name: Retrieves all rent payment history records
+          request:
+            name: GetAllRentPaymentHistoryRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllRentPaymentHistory
+          errors:
+            - commons.DefaultError
+types:
+  RentPaymentHistory:
+    properties:
+      id:
+        docs: The unique identifier for the applicant
+        type: string
+      created_at:
+        docs: The date record first entered propify
+        type: string
+      updated_at:
+        docs: The date record was last updated in propify
+        type: string
+      x_id:
+        docs: The external ID from the source vendor
+        type: string
+      x_lease_id:
+        docs: The external ID of the lease from the source vendor
+        type: optional<string>
+      x_resident_id:
+        docs: The external ID of the resident from the source vendor
+        type: optional<string>
+      x_property_id:
+        docs: The external ID of the property from the source vendor
+        type: optional<string>
+      amount_in_cents:
+        docs: The amount of the payment in cents
+        type: optional<double>
+      date_received:
+        docs: The date the payment was received
+        type: optional<string>
+      payment_type:
+        docs: The type of payment
+        type: optional<string>
+      payment_status:
+        docs: The status of the payment
+        type: optional<string>
+      integration_vendor:
+        docs: The property management system of record
+        type: commons.IntegrationVendor
+
+  AllRentPaymentHistory:
+    properties:
+      meta: commons.Meta
+      results: list<RentPaymentHistory>

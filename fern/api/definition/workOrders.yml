@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+
+services:
+  http:
+    WorkOrdersService:
+      auth: true
+      base-path: /v1/work-orders
+      endpoints:
+        getAllWorkOrders:
+          path: /
+          method: GET
+          docs: Get all work orders
+          display-name: Retrieves all work orders
+          request:
+            name: GetAllUnitsRequest
+            query-parameters:
+              order-by: 
+                type: optional<string>
+                docs: | 
+                  Order the results by a field. 
+                  Optionally include asc or desc preceded by a colon (default is asc). 
+                  Example: `?order-by=vendor:asc,created_at:desc`
+              offset: 
+                type: optional<integer>
+                docs: Can be used for paginating results
+              limit: 
+                type: optional<integer>
+                docs: A number between 1 and 250 to determine the number of results to return in a single query
+          response: AllWorkOrders 
+          errors:
+            - commons.DefaultError
+
+types:
+  WorkOrder:
+    properties:
+      id:
+        docs: The unique identifier for the property
+        type: string
+      created_at:
+        docs: The date record first entered propify
+        type: string
+      updated_at:
+        docs: The date record was last updated in propify
+        type: string
+      x_id:
+        docs: The external ID from the source vendor
+        type: string
+      x_property_id:
+        docs: The external ID of the property from the source vendor
+        type: optional<string>
+      x_unit_id:
+        docs: The external ID of the unit from the source vendor
+        type: optional<string>
+      x_resident_id:
+        docs: The external ID of the resident from the source vendor
+        type: optional<string>
+      details:
+        docs: The details of the work order
+        type: optional<string>
+      due_date:
+        docs: The date the work order is due
+        type: optional<string>
+      completed_date:
+        docs: The date the work order was completed
+        type: optional<string>
+      entry_contact:
+        docs: The contact who entered the work order
+        type: optional<string>
+      entry_date:
+        docs: The date the work order was entered
+        type: optional<string>
+      entry_type:
+        docs: The type of entry
+        type: optional<string>
+      invoice_amount:
+        docs: The amount of the invoice
+        type: optional<integer>
+      invoice_number:
+        docs: The number of the invoice
+        type: optional<string>
+      notes:
+        docs: The notes of the work order
+        type: optional<string>
+      priority:
+        docs: The priority of the work order
+        type: optional<string>
+      status:
+        docs: The status of the work order
+        type: optional<string>
+      type:
+        docs: The type of the work order
+        type: optional<string>
+      integration_vendor:
+        docs: The property management system of record
+        type: commons.IntegrationVendor
+
+  AllWorkOrders:
+    properties:
+      meta: commons.Meta
+      results: list<WorkOrder>

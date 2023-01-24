@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+imports:
+  commons: commons.yml
+  
+services:
+  http:
+    LeadsService:
+      auth: true
+      base-path: /v1/leads
+      endpoints:
+        get:
+          path: /
+          method: GET
+          display-name: Retrieves all leads
+          response: AllLeads
+          errors: 
+            - commons.DefaultError
+
+types:
+  AllLeads:
+    properties:
+      meta: commons.Meta
+      results: list<Lead>
+
+  Lead: unknown 
+      
