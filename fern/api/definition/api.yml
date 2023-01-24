@@ -8,7 +8,8 @@ auth-schemes:
 headers:
   propify-api-key: string 
 environments:
-  demo: demo.getpropify.com/v1
-default-environment: demo
+  Demo: https://demo.getpropify.com/v1
+  Production: https://api.getpropify.com/v1
+default-environment: Demo
 error-discrimination:
   strategy: status-code
