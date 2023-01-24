@@ -1,17 +1,17 @@
-# {Company} API
+# Propify API
 
 Tagging a release on this repository will update the:
 
-- [Node.js SDK repo](https://github.com/fern-{company}/{company}-node)
-- [OpenAPI spec repo](https://github.com/fern-{company}/{company}-openapi)
-- [Postman collection repo](https://github.com/fern-{company}/{company}-postman)
+- [Node.js SDK repo](https://github.com/fern-propify/propify-node)
+- [OpenAPI spec repo](https://github.com/fern-propify/propify-openapi)
+- [Postman collection repo](https://github.com/fern-propify/propify-postman)
 - _More SDKs to come..._
 
 ## What is in this repository?
 
 This repository contains
 
-- {Company}'s Fern API Definition which lives in the [definition](./fern/api/definition/) folder
+- Propify's Fern API Definition which lives in the [definition](./fern/api/definition/) folder
 - Generators (see [generators.yml](./fern/api/generators.yml))
 
 ## What is in the API Definition?
