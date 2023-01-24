@@ -1,8 +1,11 @@
 name: api
 display-name: Propify API
-auth: headers 
-headers: 
-  propify-api-key: string 
-  propify-api-secret: string
+auth: Headers
+auth-schemes:
+  HeaderAuth:
+    header: propify-api-key
+    type: string 
+    # header: propify-api-secret
+    # type: string
 error-discrimination:
   strategy: status-code
