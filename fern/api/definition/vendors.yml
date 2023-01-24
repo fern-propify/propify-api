@@ -9,18 +9,18 @@ services:
       auth: true
       base-path: /v1/vendors
       endpoints:
-        getAllVendors:
-          path: /
+        getAll:
+          path: ""
           method: GET
           display-name: Retrieves all vendors
-          response: AllVendors
+          response: GetAllVendorsResponse
           errors:
             - commons.DefaultError
 
 types:
-  AllVendors:
+  GetAllVendorsResponse:
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<Vendor>
 
   Vendor: unknown 

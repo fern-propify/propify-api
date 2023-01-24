@@ -9,18 +9,18 @@ services:
       auth: true
       base-path: /v1/unit-pricing
       endpoints:
-        getAllUnitPricing:
-          path: /
+        getAllUnitPrices:
+          path: ""
           method: GET
           display-name: Retrieves all unit pricing
-          response: AllUnitPricing
+          response: GetAllUnitPricesResponse
           errors:
             - commons.DefaultError
 
 types:
-  AllUnitPricing:
+  GetAllUnitPricesResponse:
     properties:
-      meta: commons.Meta
-      results: list<UnitPricing>
+      meta: commons.Metadata
+      results: list<UnitPrice>
 
-  UnitPricing: unknown
+  UnitPrice: unknown

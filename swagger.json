@@ -1,0 +1,3193 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Propify API Documentation",
+      "version": "1.1.0"
+    },
+    "paths": {
+      "/v1/accounting": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/accounting Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/accounting Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Retrieves all accounting records",
+          "tags": [
+            "accounting"
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/applicants": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/applicants Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the applicant"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "x_property_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external lease ID from the source vendor"
+                            },
+                            "first_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "First name of the applicant"
+                            },
+                            "middle_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Middle name of the applicant"
+                            },
+                            "last_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Last name of the applicant"
+                            },
+                            "date_of_birth": {
+                              "nullable": true,
+                              "description": "Applicant date of birth",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "address_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant street address line 1"
+                            },
+                            "address_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant street address line 2"
+                            },
+                            "city": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant city"
+                            },
+                            "state": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant state"
+                            },
+                            "zip": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant zip code"
+                            },
+                            "phone_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant phone number"
+                            },
+                            "phone_1_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of phone number 1"
+                            },
+                            "phone_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant phone number 2"
+                            },
+                            "phone_2_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of phone number 2"
+                            },
+                            "email_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant email address"
+                            },
+                            "email_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Applicant email address alternate"
+                            },
+                            "notes": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Notes"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "x_property_id",
+                            "first_name",
+                            "middle_name",
+                            "last_name",
+                            "date_of_birth",
+                            "address_1",
+                            "address_2",
+                            "city",
+                            "state",
+                            "zip",
+                            "phone_1",
+                            "phone_1_type",
+                            "phone_2",
+                            "phone_2_type",
+                            "email_1",
+                            "email_2",
+                            "notes",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/applicants Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all applicants",
+          "summary": "Retrieves all applicants",
+          "tags": [
+            "applicants"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/applicants/{id}": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/applicants/:id Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "The unique identifier for the applicant"
+                          },
+                          "created_at": {
+                            "description": "The date record first entered propify",
+                            "type": "string",
+                            "format": "date-time",
+                            "externalDocs": {
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                            }
+                          },
+                          "updated_at": {
+                            "description": "The date record was last updated in propify",
+                            "type": "string",
+                            "format": "date-time",
+                            "externalDocs": {
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                            }
+                          },
+                          "x_id": {
+                            "type": "string",
+                            "description": "The external ID from the source vendor"
+                          },
+                          "x_property_id": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The external lease ID from the source vendor"
+                          },
+                          "first_name": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "First name of the applicant"
+                          },
+                          "middle_name": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Middle name of the applicant"
+                          },
+                          "last_name": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Last name of the applicant"
+                          },
+                          "date_of_birth": {
+                            "nullable": true,
+                            "description": "Applicant date of birth",
+                            "type": "string",
+                            "format": "date-time",
+                            "externalDocs": {
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                            }
+                          },
+                          "address_1": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant street address line 1"
+                          },
+                          "address_2": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant street address line 2"
+                          },
+                          "city": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant city"
+                          },
+                          "state": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant state"
+                          },
+                          "zip": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant zip code"
+                          },
+                          "phone_1": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant phone number"
+                          },
+                          "phone_1_type": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The type of phone number 1"
+                          },
+                          "phone_2": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant phone number 2"
+                          },
+                          "phone_2_type": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The type of phone number 2"
+                          },
+                          "email_1": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant email address"
+                          },
+                          "email_2": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Applicant email address alternate"
+                          },
+                          "notes": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Notes"
+                          },
+                          "integration_vendor": {
+                            "type": "string",
+                            "description": "The property management system of record"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "created_at",
+                          "updated_at",
+                          "x_id",
+                          "x_property_id",
+                          "first_name",
+                          "middle_name",
+                          "last_name",
+                          "date_of_birth",
+                          "address_1",
+                          "address_2",
+                          "city",
+                          "state",
+                          "zip",
+                          "phone_1",
+                          "phone_1_type",
+                          "phone_2",
+                          "phone_2_type",
+                          "email_1",
+                          "email_2",
+                          "notes",
+                          "integration_vendor"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/applicants/:id Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get a single applicants",
+          "summary": "Retrieves a single applicants by applicants ID",
+          "tags": [
+            "applicants"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "description": "GET /v1/applicants/:id parameter",
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/leads": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/leads Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/leads Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Retrieves all leads",
+          "tags": [
+            "leads"
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/leases": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/leases Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the resident"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "x_property_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external property ID from the source vendor"
+                            },
+                            "x_resident_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external resident ID from the source vendor"
+                            },
+                            "x_unit_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external unit ID from the source vendor"
+                            },
+                            "rent_amount_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The rent amount in cents"
+                            },
+                            "rent_due_day": {
+                              "nullable": true,
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 0,
+                              "exclusiveMinimum": false,
+                              "maximum": 9007199254740991,
+                              "exclusiveMaximum": false,
+                              "description": "The day of the month the rent is due"
+                            },
+                            "deposit_amount": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The deposit amount in cents"
+                            },
+                            "deposit_amount_amount_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The deposit amount in cents"
+                            },
+                            "deposit_date": {
+                              "nullable": true,
+                              "description": "The date the deposit was received",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "signature_date": {
+                              "nullable": true,
+                              "description": "The date the lease was signed",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "start_date": {
+                              "nullable": true,
+                              "description": "The date the lease starts",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "end_date": {
+                              "nullable": true,
+                              "description": "The date the lease ends",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "application_date": {
+                              "nullable": true,
+                              "description": "The date the application was submitted",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "scheduled_move_in_date": {
+                              "nullable": true,
+                              "description": "The date the resident is scheduled to move in",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "scheduled_move_out_date": {
+                              "nullable": true,
+                              "description": "The date the resident is scheduled to move out",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "realized_move_in_date": {
+                              "nullable": true,
+                              "description": "The date the resident actually moved in",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "realized_move_out_date": {
+                              "nullable": true,
+                              "description": "The date the resident actually moved out",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "status": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The status of the lease"
+                            },
+                            "type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of lease"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "x_property_id",
+                            "x_resident_id",
+                            "x_unit_id",
+                            "rent_amount_in_cents",
+                            "rent_due_day",
+                            "deposit_amount",
+                            "deposit_amount_amount_in_cents",
+                            "deposit_date",
+                            "signature_date",
+                            "start_date",
+                            "end_date",
+                            "application_date",
+                            "scheduled_move_in_date",
+                            "scheduled_move_out_date",
+                            "realized_move_in_date",
+                            "realized_move_out_date",
+                            "status",
+                            "type",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/leases Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all leases",
+          "summary": "Retrieves all leases",
+          "tags": [
+            "leases"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/listings": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/listings Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/listings Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Retrieves all listings",
+          "tags": [
+            "listings"
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/properties": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/properties Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the property"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The name of the property"
+                            },
+                            "number_of_units": {
+                              "nullable": true,
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 0,
+                              "exclusiveMinimum": false,
+                              "maximum": 9007199254740991,
+                              "exclusiveMaximum": false,
+                              "description": "The number of units in the property"
+                            },
+                            "street_address_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The first line of the street address"
+                            },
+                            "street_address_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The second line of the street address"
+                            },
+                            "city": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The city"
+                            },
+                            "state": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The state"
+                            },
+                            "zip": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The zip code"
+                            },
+                            "year_built": {
+                              "nullable": true,
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 0,
+                              "exclusiveMinimum": false,
+                              "maximum": 9007199254740991,
+                              "exclusiveMaximum": false,
+                              "description": "The year the property was built"
+                            },
+                            "manager_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The name of the property manager"
+                            },
+                            "manager_phone_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The first phone number of the property manager"
+                            },
+                            "manager_phone_1_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of the first phone number of the property manager"
+                            },
+                            "manager_phone_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The second phone number of the property manager"
+                            },
+                            "manager_phone_2_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of the second phone number of the property manager"
+                            },
+                            "manager_email": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The email address of the property manager"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "name",
+                            "number_of_units",
+                            "street_address_1",
+                            "street_address_2",
+                            "city",
+                            "state",
+                            "zip",
+                            "year_built",
+                            "manager_name",
+                            "manager_phone_1",
+                            "manager_phone_1_type",
+                            "manager_phone_2",
+                            "manager_phone_2_type",
+                            "manager_email",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/properties Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all properties",
+          "summary": "Retrieves all properties",
+          "tags": [
+            "properties"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/residents": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/residents Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the resident"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "x_lease_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external lease ID from the source vendor"
+                            },
+                            "first_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "First name of the resident"
+                            },
+                            "middle_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Middle name of the resident"
+                            },
+                            "last_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Last name of the resident"
+                            },
+                            "date_of_birth": {
+                              "nullable": true,
+                              "description": "Resident date of birth",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "address_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident street address line 1"
+                            },
+                            "address_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident street address line 2"
+                            },
+                            "city": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident city"
+                            },
+                            "state": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident state"
+                            },
+                            "zip": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident zip code"
+                            },
+                            "phone_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident phone number"
+                            },
+                            "phone_1_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of phone number 1"
+                            },
+                            "phone_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident phone number 2"
+                            },
+                            "phone_2_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of phone number 2"
+                            },
+                            "email_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident email address"
+                            },
+                            "email_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident email address alternate"
+                            },
+                            "address_1_alternate": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident street address line 1 alternate"
+                            },
+                            "address_2_alternate": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident street address line 2 alternate"
+                            },
+                            "city_alternate": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident city alternate"
+                            },
+                            "state_alternate": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident state alternate"
+                            },
+                            "zip_alternate": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Resident zip code alternate"
+                            },
+                            "is_employee": {
+                              "nullable": true,
+                              "type": "boolean",
+                              "description": "Is the resident an employee"
+                            },
+                            "notes": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Notes"
+                            },
+                            "balance_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The rent balance owed"
+                            },
+                            "late_balance_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The past due rent balance owed"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "x_lease_id",
+                            "first_name",
+                            "middle_name",
+                            "last_name",
+                            "date_of_birth",
+                            "address_1",
+                            "address_2",
+                            "city",
+                            "state",
+                            "zip",
+                            "phone_1",
+                            "phone_1_type",
+                            "phone_2",
+                            "phone_2_type",
+                            "email_1",
+                            "email_2",
+                            "address_1_alternate",
+                            "address_2_alternate",
+                            "city_alternate",
+                            "state_alternate",
+                            "zip_alternate",
+                            "is_employee",
+                            "notes",
+                            "balance_in_cents",
+                            "late_balance_in_cents",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/residents Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all residents",
+          "summary": "Retrieves all residents",
+          "tags": [
+            "residents"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/residents/{id}": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/residents/:id Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "The unique identifier for the resident"
+                          },
+                          "created_at": {
+                            "description": "The date record first entered propify",
+                            "type": "string",
+                            "format": "date-time",
+                            "externalDocs": {
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                            }
+                          },
+                          "updated_at": {
+                            "description": "The date record was last updated in propify",
+                            "type": "string",
+                            "format": "date-time",
+                            "externalDocs": {
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                            }
+                          },
+                          "x_id": {
+                            "type": "string",
+                            "description": "The external ID from the source vendor"
+                          },
+                          "x_lease_id": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The external lease ID from the source vendor"
+                          },
+                          "first_name": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "First name of the resident"
+                          },
+                          "middle_name": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Middle name of the resident"
+                          },
+                          "last_name": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Last name of the resident"
+                          },
+                          "date_of_birth": {
+                            "nullable": true,
+                            "description": "Resident date of birth",
+                            "type": "string",
+                            "format": "date-time",
+                            "externalDocs": {
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                            }
+                          },
+                          "address_1": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident street address line 1"
+                          },
+                          "address_2": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident street address line 2"
+                          },
+                          "city": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident city"
+                          },
+                          "state": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident state"
+                          },
+                          "zip": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident zip code"
+                          },
+                          "phone_1": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident phone number"
+                          },
+                          "phone_1_type": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The type of phone number 1"
+                          },
+                          "phone_2": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident phone number 2"
+                          },
+                          "phone_2_type": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The type of phone number 2"
+                          },
+                          "email_1": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident email address"
+                          },
+                          "email_2": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident email address alternate"
+                          },
+                          "address_1_alternate": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident street address line 1 alternate"
+                          },
+                          "address_2_alternate": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident street address line 2 alternate"
+                          },
+                          "city_alternate": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident city alternate"
+                          },
+                          "state_alternate": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident state alternate"
+                          },
+                          "zip_alternate": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Resident zip code alternate"
+                          },
+                          "is_employee": {
+                            "nullable": true,
+                            "type": "boolean",
+                            "description": "Is the resident an employee"
+                          },
+                          "notes": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Notes"
+                          },
+                          "balance_in_cents": {
+                            "nullable": true,
+                            "type": "number",
+                            "description": "The rent balance owed"
+                          },
+                          "late_balance_in_cents": {
+                            "nullable": true,
+                            "type": "number",
+                            "description": "The past due rent balance owed"
+                          },
+                          "integration_vendor": {
+                            "type": "string",
+                            "description": "The property management system of record"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "created_at",
+                          "updated_at",
+                          "x_id",
+                          "x_lease_id",
+                          "first_name",
+                          "middle_name",
+                          "last_name",
+                          "date_of_birth",
+                          "address_1",
+                          "address_2",
+                          "city",
+                          "state",
+                          "zip",
+                          "phone_1",
+                          "phone_1_type",
+                          "phone_2",
+                          "phone_2_type",
+                          "email_1",
+                          "email_2",
+                          "address_1_alternate",
+                          "address_2_alternate",
+                          "city_alternate",
+                          "state_alternate",
+                          "zip_alternate",
+                          "is_employee",
+                          "notes",
+                          "balance_in_cents",
+                          "late_balance_in_cents",
+                          "integration_vendor"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/residents/:id Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get a single resident",
+          "summary": "Retrieves a single resident by resident ID",
+          "tags": [
+            "residents"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "description": "GET /v1/residents/:id parameter",
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/unit-pricing": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/unit-pricing Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/unit-pricing Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Retrieves all unit pricing",
+          "tags": [
+            "unit-pricing"
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/units": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/units Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the property"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "x_property_id": {
+                              "type": "string",
+                              "description": "The external ID of the property from the source vendor"
+                            },
+                            "number": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The unit number"
+                            },
+                            "bedrooms": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The number of bedrooms"
+                            },
+                            "bathrooms": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The number of bathrooms"
+                            },
+                            "square_feet": {
+                              "nullable": true,
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 0,
+                              "exclusiveMinimum": false,
+                              "maximum": 9007199254740991,
+                              "exclusiveMaximum": false,
+                              "description": "The square footage of the unit"
+                            },
+                            "building_number": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The building number"
+                            },
+                            "building_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The building name"
+                            },
+                            "floor_plan_code": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The floor plan code"
+                            },
+                            "floor_plan_name": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The floor plan name"
+                            },
+                            "street_address_1": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The street address line 1"
+                            },
+                            "street_address_2": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The street address line 2"
+                            },
+                            "city": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The city"
+                            },
+                            "state": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The state"
+                            },
+                            "zip": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The zip code"
+                            },
+                            "rent_amount_market_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The market rent amount in cents"
+                            },
+                            "rent_amount_min_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The minimum rent amount in cents"
+                            },
+                            "rent_amount_max_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The maximum rent amount in cents"
+                            },
+                            "is_available": {
+                              "nullable": true,
+                              "type": "boolean",
+                              "description": "Whether the unit is available"
+                            },
+                            "is_furnished": {
+                              "nullable": true,
+                              "type": "boolean",
+                              "description": "Whether the unit is furnished"
+                            },
+                            "is_listed": {
+                              "nullable": true,
+                              "type": "boolean",
+                              "description": "Whether the unit is listed"
+                            },
+                            "is_vacant": {
+                              "nullable": true,
+                              "type": "boolean",
+                              "description": "Whether the unit is vacant"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "x_property_id",
+                            "number",
+                            "bedrooms",
+                            "bathrooms",
+                            "square_feet",
+                            "building_number",
+                            "building_name",
+                            "floor_plan_code",
+                            "floor_plan_name",
+                            "street_address_1",
+                            "street_address_2",
+                            "city",
+                            "state",
+                            "zip",
+                            "rent_amount_market_in_cents",
+                            "rent_amount_min_in_cents",
+                            "rent_amount_max_in_cents",
+                            "is_available",
+                            "is_furnished",
+                            "is_listed",
+                            "is_vacant",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/units Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all units",
+          "summary": "Retrieves all units",
+          "tags": [
+            "units"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/rent-payment-history": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/rent-payment-history Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the applicant"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "x_lease_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external ID of the lease from the source vendor"
+                            },
+                            "x_resident_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external ID of the resident from the source vendor"
+                            },
+                            "x_property_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external ID of the property from the source vendor"
+                            },
+                            "amount_in_cents": {
+                              "nullable": true,
+                              "type": "number",
+                              "description": "The amount of the payment in cents"
+                            },
+                            "date_received": {
+                              "nullable": true,
+                              "description": "The date the payment was received",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "payment_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of payment"
+                            },
+                            "payment_status": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The status of the payment"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "x_lease_id",
+                            "x_resident_id",
+                            "x_property_id",
+                            "amount_in_cents",
+                            "date_received",
+                            "payment_type",
+                            "payment_status",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/rent-payment-history Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all rent payment history records",
+          "summary": "Retrieves all rent payment history records",
+          "tags": [
+            "rent-payment-history"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/vendors": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/vendors Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/vendors Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Retrieves all vendors",
+          "tags": [
+            "vendors"
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      },
+      "/v1/work-orders": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "GET /v1/work-orders Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "offset": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 9007199254740991,
+                            "exclusiveMaximum": false
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0,
+                            "exclusiveMinimum": false,
+                            "maximum": 250,
+                            "exclusiveMaximum": false
+                          },
+                          "orderBy": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {},
+                              "required": []
+                            }
+                          }
+                        },
+                        "required": [
+                          "orderBy"
+                        ]
+                      },
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "The unique identifier for the property"
+                            },
+                            "created_at": {
+                              "description": "The date record first entered propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "updated_at": {
+                              "description": "The date record was last updated in propify",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "x_id": {
+                              "type": "string",
+                              "description": "The external ID from the source vendor"
+                            },
+                            "x_property_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external ID of the property from the source vendor"
+                            },
+                            "x_unit_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external ID of the unit from the source vendor"
+                            },
+                            "x_resident_id": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The external ID of the resident from the source vendor"
+                            },
+                            "details": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The details of the work order"
+                            },
+                            "due_date": {
+                              "nullable": true,
+                              "description": "The date the work order is due",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "completed_date": {
+                              "nullable": true,
+                              "description": "The date the work order was completed",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "entry_contact": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The contact who entered the work order"
+                            },
+                            "entry_date": {
+                              "nullable": true,
+                              "description": "The date the work order was entered",
+                              "type": "string",
+                              "format": "date-time",
+                              "externalDocs": {
+                                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+                              }
+                            },
+                            "entry_type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of entry"
+                            },
+                            "invoice_amount": {
+                              "nullable": true,
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 0,
+                              "exclusiveMinimum": false,
+                              "maximum": 9007199254740991,
+                              "exclusiveMaximum": false,
+                              "description": "The amount of the invoice"
+                            },
+                            "invoice_number": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The number of the invoice"
+                            },
+                            "notes": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The notes of the work order"
+                            },
+                            "priority": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The priority of the work order"
+                            },
+                            "status": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The status of the work order"
+                            },
+                            "type": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "The type of the work order"
+                            },
+                            "integration_vendor": {
+                              "type": "string",
+                              "description": "The property management system of record"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "updated_at",
+                            "x_id",
+                            "x_property_id",
+                            "x_unit_id",
+                            "x_resident_id",
+                            "details",
+                            "due_date",
+                            "completed_date",
+                            "entry_contact",
+                            "entry_date",
+                            "entry_type",
+                            "invoice_amount",
+                            "invoice_number",
+                            "notes",
+                            "priority",
+                            "status",
+                            "type",
+                            "integration_vendor"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "meta",
+                      "results"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "GET /v1/work-orders Error response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Get all work orders",
+          "summary": "Retrieves all work orders",
+          "tags": [
+            "work-orders"
+          ],
+          "parameters": [
+            {
+              "name": "order-by",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Order the results by a field. Optionally include asc or desc preceded by a colon (default is asc). Example: ?order-by=vendor:asc,created_at:desc",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Can be used for paginating results",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 9007199254740991,
+                "exclusiveMaximum": false
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "A number between 1 and 250 to determine the number of results to return in a single query",
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 250,
+                "exclusiveMaximum": false
+              }
+            }
+          ],
+          "security": [
+            {
+              "APIKEY_1": [],
+              "APIKEY_2": []
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "schemas": {},
+      "responses": {},
+      "parameters": {},
+      "examples": {},
+      "requestBodies": {},
+      "headers": {},
+      "securitySchemes": {
+        "APIKEY_1": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "propify-api-key"
+        },
+        "APIKEY_2": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "propify-api-secret"
+        }
+      },
+      "links": {},
+      "callbacks": {}
+    },
+    "tags": [
+      {
+        "name": "applicants",
+        "description": "Applicants"
+      },
+      {
+        "name": "accounting",
+        "description": "Accounting"
+      },
+      {
+        "name": "leads",
+        "description": "Leads"
+      },
+      {
+        "name": "leases",
+        "description": "Leases"
+      },
+      {
+        "name": "listings",
+        "description": "Listings"
+      },
+      {
+        "name": "properties",
+        "description": "Properties"
+      },
+      {
+        "name": "rent-payment-history",
+        "description": "Rent Payment History"
+      },
+      {
+        "name": "residents",
+        "description": "Residents"
+      },
+      {
+        "name": "unit-pricing",
+        "description": "Unit Pricing"
+      },
+      {
+        "name": "units",
+        "description": "Units"
+      },
+      {
+        "name": "vendors",
+        "description": "Vendors"
+      },
+      {
+        "name": "work-orders",
+        "description": "Work Orders"
+      }
+    ],
+    "servers": [
+      {
+        "url": "https://demo.getpropify.com"
+      }
+    ]
+  }

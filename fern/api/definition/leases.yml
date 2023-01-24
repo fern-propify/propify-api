@@ -9,8 +9,8 @@ services:
       auth: true
       base-path: /v1/leases
       endpoints:
-        getAllLeases:
-          path: /
+        getAll:
+          path: ""
           method: GET
           docs: Get all leases
           display-name: Retrieves all leases
@@ -29,7 +29,7 @@ services:
               limit: 
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: AllLeases
+          response: GetAllLeasesResponse
           errors: 
             - commons.DefaultError
 
@@ -103,10 +103,10 @@ types:
         type: optional<string>
         docs: The type of lease
       integration_vendor: 
-        type: commons.IntegrationVendor
+        type: string
         docs: The property management system of record
 
-  AllLeases:
+  GetAllLeasesResponse:
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<Lease>

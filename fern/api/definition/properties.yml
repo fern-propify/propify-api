@@ -9,8 +9,8 @@ services:
       auth: true
       base-path: /v1/properties
       endpoints:
-        getAllProperties:
-          path: /
+        getAll:
+          path: ""
           method: GET
           docs: Get all properties
           display-name: Retrieves all properties
@@ -29,7 +29,7 @@ services:
               limit: 
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: AllProperties
+          response: GetAllPropertiesResponse
 
 types:
   Property:
@@ -89,10 +89,10 @@ types:
         type: optional<string>
         docs: The email address of the property manager
       integration_vendor: 
-        type: commons.IntegrationVendor
+        type: string
         docs: The property management system of record
 
-  AllProperties:
+  GetAllPropertiesResponse:
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<Property>

@@ -9,13 +9,13 @@ services:
       auth: true
       base-path: /v1/work-orders
       endpoints:
-        getAllWorkOrders:
-          path: /
+        getAll:
+          path: ""
           method: GET
           docs: Get all work orders
           display-name: Retrieves all work orders
           request:
-            name: GetAllUnitsRequest
+            name: GetAllWorkOrdersRequest
             query-parameters:
               order-by: 
                 type: optional<string>
@@ -29,7 +29,7 @@ services:
               limit: 
                 type: optional<integer>
                 docs: A number between 1 and 250 to determine the number of results to return in a single query
-          response: AllWorkOrders 
+          response: GetAllWorkOrdersResponse 
           errors:
             - commons.DefaultError
 
@@ -95,9 +95,9 @@ types:
         type: optional<string>
       integration_vendor:
         docs: The property management system of record
-        type: commons.IntegrationVendor
+        type: string
 
-  AllWorkOrders:
+  GetAllWorkOrdersResponse:
     properties:
-      meta: commons.Meta
+      meta: commons.Metadata
       results: list<WorkOrder>
